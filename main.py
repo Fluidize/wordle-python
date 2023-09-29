@@ -17,20 +17,15 @@ while True:  #inf attempts
     print(colored(f'thats a {len(guess)} letter word dummy', 'red'))
     continue
 
-  color_database = {}
-
-  for x in range(len(word)):
-    if word[x] == guess[x]:
-      color_database.update({word[x]: 'green'})
-    elif guess[x] in word:
-      color_database.update({guess[x]: 'yellow'})
-    else:
-      color_database.update({guess[x]: 'white'})
-
   for x in range(len(word)):
     if guess[x] == word[x]:
-      colored_output = colored(guess[x], color_database[x])
-    print("|" + colored_output, end="" + "|")
+      color = 'green'
+    elif guess[x] in word:
+      color = 'yellow'
+    else:
+      color = 'white'
+
+    print("|" + colored(guess[x], color) + "|", end="")
   print('\n')
 
   if guess == word:
