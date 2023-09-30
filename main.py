@@ -1,6 +1,5 @@
 from termcolor import colored
 import random
-import csv
 
 wordlist = []
 with open("sgb-words.txt") as textfile:
@@ -11,6 +10,7 @@ with open("sgb-words.txt") as textfile:
 # https://github.com/charlesreid1/five-letter-words/blob/master/sgb-words.txt
 
 word = random.choice(wordlist)
+attempts = 0
 while True:  #inf attempts
   guess = input('Guess: ').lower()
   if len(guess) != len(word):
@@ -29,5 +29,7 @@ while True:  #inf attempts
   print('\n')
 
   if guess == word:
-    print('you won')
+    print(f"You spelled the word '{word}' after {attempts} attempts.")
     break
+
+  attempts += 1
